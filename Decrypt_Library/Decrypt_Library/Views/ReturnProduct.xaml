@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             IconImageSource="book.png"
+             BackgroundColor="#262223"
+             x:Class="Decrypt_Library.Views.ReturnProduct">
+    <ContentPage.Content>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+
+            </Grid.ColumnDefinitions>
+
+
+
+
+            <StackLayout Grid.Column="1" Grid.Row="1">
+                <Frame BackgroundColor="#262223"
+                   BorderColor="#262223"
+                   HeightRequest="500"
+                   Grid.Row="1"
+                   CornerRadius="10"
+                   Grid.Column="1"
+                   WidthRequest="500">
+
+
+                    <StackLayout Grid.Column="1" Grid.Row="1"
+                                 Margin="0,-40,0,0">
+
+
+                        <Image Source="decrypt8.png"
+                           Scale="0.6"/>
+
+
+                        <Label Text="Återlämningsautomat!"
+                       FontSize="17"
+                               Margin="0,-30,0,0"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       />
+
+                        <Frame Padding="0"
+                           CornerRadius="20">
+                            <Entry x:Name="Product" 
+                               Placeholder="Streckod på produkt"
+                                   IsVisible="true"
+                               FontAttributes="Bold"
+                                   />
+                        </Frame>
+                        <Button x:Name="ReturnProductId" Text="Lämna tillbaka" IsVisible="true" Clicked="ReturnProduct_Clicked"  BackgroundColor="YellowGreen" TextColor="black" CornerRadius="10" FontAttributes="Bold"/>
+                        <Button x:Name="CheckOut" Text="Klar" IsVisible="false" Clicked="CheckOut_Clicked"  BackgroundColor="YellowGreen" TextColor="Black" CornerRadius="10" FontAttributes="Bold"/>
+                        <Button x:Name="StartAgain" Text="Starta om" Clicked="StartAgain_Clicked" IsVisible="false" BackgroundColor="White" TextColor="Black" CornerRadius="10" FontAttributes="Bold"/>
+
+
+                        
+
+                        <StackLayout>
+                            <Label x:Name="Headline" Text="ÅTERLÄMNINGSKVITTO" FontSize="Large" IsVisible="false" TextColor="White"/>
+                        </StackLayout>
+
+                        <ListView x:Name="ProductList"
+                              VerticalScrollBarVisibility="Always"
+                              IsVisible="true"
+                              >
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Frame>
+                                            <StackLayout>
+
+                                                <StackLayout Orientation="Horizontal">
+
+                                                    <Label Text="{Binding Id}"
+                                                   Grid.Column="0"
+                                                   TextColor="White"
+                                                   FontAttributes="Bold"/>
+                                                    <Label Text="{Binding Title}"
+                                                   Grid.Column="1"
+                                                   TextColor="White"
+                                                   FontAttributes="Bold"/>
+                                                </StackLayout>
+
+
+                                                <Label Text="{Binding ReturnDate}"
+                                                   Grid.Column="0"
+                                           Grid.Row="1"
+                                                   TextColor="White"
+                                                   FontAttributes="Bold"/>
+
+
+                                            </StackLayout>
+                                        </Frame>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+
+        </Grid>
+
+
+
+
+
+
+
+
+
+
+
+    </ContentPage.Content>
+</ContentPage>

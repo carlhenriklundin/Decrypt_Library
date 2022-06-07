@@ -1,0 +1,366 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:decrypt_library="clr-namespace:Decrypt_Library" x:DataType="decrypt_library:MainPage"
+             BackgroundColor="#262223"
+             TabIndex="6"
+             IconImageSource="register.png"
+             xmlns:behaviors="clr-namespace:Decrypt_Library.Readers"
+             x:Class="Decrypt_Library.Views.RegisterPage">
+    <ContentPage.Content
+        >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <AbsoluteLayout Grid.Column="1"
+                            IsVisible="false"
+                            x:Name="registrationDoneFrame">
+
+                <Image Source="decrypt8.png"
+                   Grid.Column="1"
+                                   Margin="0,-20,0,0"
+                               Scale="0.4"/>
+
+                <Label TextColor="MediumPurple"
+                       FontAttributes="Bold"
+                       AbsoluteLayout.LayoutBounds="290,150,200,30"
+                       Text="Registreringen är nu klar!"/>
+
+                <Label TextColor="MediumPurple"
+                       FontAttributes="Bold"
+                       AbsoluteLayout.LayoutBounds="285,170,200,30"
+                       Text="Du skickas nu inloggningen"/>
+
+                <ProgressBar x:Name="refreshProgress"
+                             ProgressColor="MediumPurple"
+                       AbsoluteLayout.LayoutBounds="230,220,320,5"
+                             
+                             >
+                    
+                    
+                </ProgressBar>
+
+            </AbsoluteLayout>
+
+
+
+            <Frame BackgroundColor="Transparent"
+                   BorderColor="Transparent"
+                   Margin="0,40,0,0"
+                   HeightRequest="400"
+                   Grid.Row="1"
+                   CornerRadius="10"
+                   Grid.Column="1"
+                   x:Name="registerFrame"
+                   WidthRequest="410">
+
+                <ScrollView VerticalScrollBarVisibility="Always"
+                            >
+
+                    <Grid>
+
+                        <AbsoluteLayout>
+
+                            <BoxView
+                                BackgroundColor="White"
+                           AbsoluteLayout.LayoutBounds="10,130,390,1"
+                                />
+
+                            <Label Text="Fyll i dina uppgifter"
+                               TextColor="MediumPurple"
+                                   FontSize="15"
+                           AbsoluteLayout.LayoutBounds="20,105,200,30"
+                               FontAttributes="Bold"
+                               />
+
+                            <Label TextColor="White"
+                                   AbsoluteLayout.LayoutBounds="10,145,120,30"
+                                   Text="Användarnamn"
+                                   FontAttributes="Bold"
+                                   />
+
+                            <Label TextColor="White"
+                                   AbsoluteLayout.LayoutBounds="215,145,120,30"
+                                   Text="Personnummer"
+                                   FontAttributes="Bold"
+                                   />
+
+                            <Label TextColor="White"
+                                   AbsoluteLayout.LayoutBounds="10,205,120,30"
+                                   Text="Email"
+                                   FontAttributes="Bold"
+                                   />
+
+                            <Label TextColor="White"
+                                   AbsoluteLayout.LayoutBounds="215,205,120,30"
+                                   Text="Telefonnummer"
+                                   FontAttributes="Bold"
+                                   />
+
+                            <Label TextColor="White"
+                                   AbsoluteLayout.LayoutBounds="10,265,120,30"
+                                   Text="Lösenord"
+                                   FontAttributes="Bold"
+                                   />
+
+                            <Label TextColor="White"
+                                   AbsoluteLayout.LayoutBounds="215,265,150,30"
+                                   Text="Skriv lösenordet igen"
+                                   FontAttributes="Bold"
+                                   />
+
+
+                            <Label TextColor="White"
+                                   FontSize="8"
+                                   AbsoluteLayout.LayoutBounds="10,320,150,30"
+                                   Text="Måste innehålla minst 1 siffra"
+                                   FontAttributes="Bold"
+                                   />
+
+                        </AbsoluteLayout>
+                        <StackLayout>
+                            
+                            <Image Source="decrypt8.png"
+                                   Margin="0,-20,0,0"
+                               Scale="0.7"/>
+
+                            <StackLayout Orientation="Horizontal"
+                                         Margin="0,40,0,0">
+
+                                <Frame Padding="0"
+                                       WidthRequest="200"
+                                       CornerRadius="20">
+
+                                    <Entry 
+                                           Completed="Entry_Completed"
+                                        TextChanged="Username_TextChanged"
+                                           FontSize="12"
+                                           FontAttributes="Bold"
+                                           x:Name="Username">
+                                        <Entry.Behaviors>
+                                            <behaviors:UsernameValdiationBehavior/>
+                                        </Entry.Behaviors>
+                                        
+                                    </Entry>
+                                </Frame>
+
+                                <Frame Padding="0"
+                                       WidthRequest="200"
+                                       CornerRadius="20">
+                                    <Entry WidthRequest="300"
+                                           Completed="Entry_Completed"
+                                           FontAttributes="Bold"
+                                           TextChanged="SSN_TextChanged"
+                                           x:Name="SSN">
+
+                                        <Entry.Behaviors>
+                                            <behaviors:SSNValidationBehavior/>
+                                        </Entry.Behaviors>
+
+                                    </Entry>
+                                           
+                                </Frame>
+                            </StackLayout>
+
+                            <StackLayout Orientation="Horizontal"
+                                         Margin="0,20,0,0">
+
+
+                                <Frame Padding="0"
+                                       WidthRequest="200"
+                                       CornerRadius="20">
+
+                                    <Entry WidthRequest="300"
+                                           FontAttributes="Bold"
+                                           Completed="Entry_Completed"
+                                           TextChanged="Email_TextChanged"
+                                           x:Name="Email">
+                                        <Entry.Behaviors>
+                                            <behaviors:EmailValidationBehavior/>
+                                        </Entry.Behaviors>
+
+                                    </Entry>
+                                </Frame>
+                                
+                                <Frame Padding="0"
+                                       WidthRequest="200"
+                                       CornerRadius="20">
+
+                                    <Entry WidthRequest="300"
+                                           FontAttributes="Bold"
+                                           Completed="Entry_Completed"
+                                           TextChanged="Phone_TextChanged"
+                                           x:Name="Phone">
+
+                                        <Entry.Behaviors>
+                                            <behaviors:PhoneNumberValidationBehavior/>
+                                        </Entry.Behaviors>
+                                    </Entry>
+                                  
+
+                                </Frame>
+
+                            </StackLayout>
+
+
+                            <StackLayout Orientation="Horizontal"
+                                         Margin="0,20,0,0">
+
+                                <Frame Padding="0"
+                                       WidthRequest="200"
+                                       CornerRadius="20">
+
+                                    <Entry WidthRequest="300"
+                                           FontAttributes="Bold"
+                                       Completed="Entry_Completed"
+                                           TextChanged="Password_TextChanged"
+                                           IsPassword="True"
+                                       x:Name="Password">
+                                        <Entry.Behaviors>
+                                            <behaviors:PasswordValidationBehavior/>
+                                        </Entry.Behaviors>
+
+                                    </Entry>
+                                       
+
+                                </Frame>
+
+                                <Frame Padding="0"
+                                       WidthRequest="200"
+                                       CornerRadius="20">
+
+                                    <Entry WidthRequest="300"
+                                           FontAttributes="Bold"
+                                           IsPassword="True"
+                                       x:Name="confirmPassword">
+                                        <Entry.Behaviors>
+                                            <behaviors:ConfirmPasswordValidationBehavior/>
+                                        </Entry.Behaviors>
+                                    </Entry>
+                                </Frame>
+
+                            </StackLayout>
+
+                            <AbsoluteLayout Margin="0,20,0,0">
+
+                                <BoxView
+                                BackgroundColor="#262223"
+                           AbsoluteLayout.LayoutBounds="10,-60,390,2"
+                                />
+
+                                <BoxView
+                                BackgroundColor="#262223"
+                           AbsoluteLayout.LayoutBounds="10,-28,390,2"
+                                />
+
+                                <BoxView
+                                BackgroundColor="#262223"
+                           AbsoluteLayout.LayoutBounds="10,-86,390,2"
+                                />
+
+                                <BoxView
+                                BackgroundColor="#262223"
+                           AbsoluteLayout.LayoutBounds="10,-118,390,2"
+                                />
+
+                                <BoxView
+                                BackgroundColor="#262223"
+                           AbsoluteLayout.LayoutBounds="10,-146,390,2"
+                                />
+
+                                <BoxView
+                                BackgroundColor="#262223"
+                           AbsoluteLayout.LayoutBounds="10,-178,390,2"
+                                />
+
+
+                                <BoxView
+                                BackgroundColor="#262223"
+                           AbsoluteLayout.LayoutBounds="0,-178,2,190"
+                                />
+
+                                <BoxView
+                                BackgroundColor="#262223"
+                           AbsoluteLayout.LayoutBounds="198,-178,2,190"
+                                />
+
+                                <BoxView
+                                BackgroundColor="#262223"
+                           AbsoluteLayout.LayoutBounds="206,-178,2,190"
+                                />
+
+                                <BoxView
+                                BackgroundColor="#262223"
+                           AbsoluteLayout.LayoutBounds="404,-178,2,190"
+                                />
+
+                                <Frame AbsoluteLayout.LayoutBounds="10,-10,20,20"
+                                       Padding="0"
+                                       BackgroundColor="White"
+                                       CornerRadius="10">
+
+                                    <CheckBox x:Name="Terms"
+                                              IsChecked="False"
+                                              Color="#262223"
+                                              Margin="0,-6,0,0">
+
+                                    </CheckBox>
+                                </Frame>
+
+                                <Label TextColor="White"
+                                       FontAttributes="Bold"
+                                       FontSize="8"
+                                       AbsoluteLayout.LayoutBounds="40,-5,300,20"
+                                       Text="Genom att checka i boxen så godkänner du att personuppgifter sparas enligt Datainspektionens regler om GDPR"/>
+
+                            </AbsoluteLayout>
+
+                            <Frame Padding="0"
+                                   BackgroundColor="MediumPurple"
+                                   CornerRadius="20"
+                                   IsClippedToBounds="True">
+
+                                <Grid>
+                                    <Button Text="Registrera"
+                                            FontSize="15"
+                                            BackgroundColor="MediumPurple"
+                                            FontAttributes="Bold"
+                                            Grid.Column="0"
+                                            Clicked="Entry_Completed"
+                                            TextColor="Black">
+
+                                    </Button>
+                                    <Button Text="Avbryt"
+                                FontSize="15"
+                                FontAttributes="Bold"
+                                            Grid.Column="1"
+                                BackgroundColor="White"
+                                TextColor="Black"
+                                Clicked="Button_Clicked_1">
+
+                                    </Button>
+                                </Grid>
+
+                            </Frame>
+
+
+
+
+                        </StackLayout>
+                    </Grid>
+                </ScrollView>
+
+            </Frame>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

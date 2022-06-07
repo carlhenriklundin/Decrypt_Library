@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="#262223"
+             IconImageSource="book.png"
+             x:Class="Decrypt_Library.Views.Loan">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+
+            </Grid.ColumnDefinitions>
+
+     
+
+
+            <StackLayout Grid.Column="1" Grid.Row="1">
+                <Frame 
+                   HeightRequest="500"
+                   Grid.Row="1"
+                   CornerRadius="10"
+                   Grid.Column="1"
+                   WidthRequest="500">
+
+                    <StackLayout Grid.Column="1" Grid.Row="1"
+                                 Margin="0,-40,0,0">
+
+
+                        <Image Source="decrypt8.png"
+                           Scale="0.6"/>
+
+
+                        <Label Text="Utlåningsautomat!"
+                       FontSize="17"
+                               Margin="0,-30,0,0"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       />
+
+                        <StackLayout Orientation="Horizontal">
+
+                            <Label x:Name="User" Text="" TextColor="White" 
+                               FontAttributes="Bold"/>
+                            <Button
+                                x:Name="CancelButton"
+                                IsVisible="True"
+                        Text="Avbryt låneprocessen"
+                                Clicked="CancelButton_Clicked"
+                                Margin="0,0,0,0"
+                                    CornerRadius="20"
+                        FontAttributes="Bold"
+                        BackgroundColor="MediumPurple"/>
+
+                        </StackLayout>
+
+                        
+                        
+                        
+                        <Frame Padding="0"
+                           x:Name="userIdFrame"
+                           CornerRadius="20">
+                            <Entry x:Name="CheckUserId" 
+                               Placeholder="Lånetagar-Id" 
+                               TextChanged="CheckUserId_TextChanged"
+                               FontAttributes="Bold"
+                                   />
+                        </Frame>
+                        <Frame Padding="0"
+                           x:Name="userPasswordFrame"
+                           CornerRadius="20">
+                            <Entry x:Name="Password" 
+                               TextChanged="Password_TextChanged"
+                                   IsPassword="true"
+                               Placeholder="Lösenord" 
+                               FontAttributes="Bold"/>
+                        </Frame>
+                        <Button x:Name="checkUserButton" Text="Kontrollera lånetagare" Clicked="checkUserButton_Clicked" BackgroundColor="White" TextColor="black" CornerRadius="10" FontAttributes="Bold"/>
+
+
+
+                        <Entry x:Name="Product" Placeholder="Streckod på produkt" IsVisible="false"
+                               FontAttributes="Bold"/>
+
+
+
+                        <Button x:Name="Add" 
+                                Text="Lägg till" IsVisible="false" Clicked="Add_Clicked" BackgroundColor="YellowGreen" TextColor="black" CornerRadius="10" FontAttributes="Bold"/>
+                        <Button x:Name="AddNewProduct" Text="Lägg till ny produkt" IsVisible="false" Clicked="AddNewProduct_Clicked" BackgroundColor="White" TextColor="black" CornerRadius="10" FontAttributes="Bold" />
+                        <Button x:Name="CheckOut" Text="Check out" IsVisible="false" Clicked="CheckOut_Clicked" BackgroundColor="White" TextColor="black" CornerRadius="10" FontAttributes="Bold" />
+
+
+                        <Button x:Name="StartAgain" Text="Logga ut" IsVisible="false" Clicked="StartAgain_Clicked" BackgroundColor="White" TextColor="black" CornerRadius="10" FontAttributes="Bold"/>
+
+                        <StackLayout>
+
+
+                            <Label x:Name="Headline" Text="UTLÅNINGSKVITTO" FontSize="Large" IsVisible="false" TextColor="White"/>
+                            <Label x:Name="NumberOfItem" Text="" TextColor="White" IsVisible="false" />
+                        </StackLayout>
+
+                        <ListView x:Name="ProductList"
+                              VerticalScrollBarVisibility="Never"
+                              IsVisible="true"
+                              >
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Frame>
+                                            <StackLayout>
+
+                                                <StackLayout Orientation="Horizontal">
+
+                                                    <Label Text="{Binding Id}"
+                                                   Grid.Column="0"
+                                                   TextColor="White"
+                                                   FontAttributes="Bold"/>
+                                                    <Label Text="{Binding Title}"
+                                                   Grid.Column="1"
+                                                   TextColor="White"
+                                                   FontAttributes="Bold"/>
+                                                </StackLayout>
+
+
+                                                <Label Text="{Binding ReturnDate}"
+                                                   Grid.Column="0"
+                                           Grid.Row="1"
+                                                   TextColor="White"
+                                                   FontAttributes="Bold"/>
+
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <Button Grid.Column="0"
+                                                    x:Name="DeleteButton"
+                                                    TextColor="Black"
+                                                    CornerRadius="10"
+                                                            
+                                                    BackgroundColor="White"
+                                                    FontAttributes="Bold"
+                                                    Clicked="Button_Clicked"
+                                                    Text="Ta bort"/>
+
+                                                </Grid>
+
+                                            </StackLayout>
+                                        </Frame>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
